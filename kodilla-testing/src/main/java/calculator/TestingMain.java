@@ -1,21 +1,26 @@
 package calculator;
 
+import com.kodilla.testing.user.SimpleUser;
+
 public class TestingMain {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-        int resultAdd = calculator.add(10, 5);
+        SimpleUser simpleUser = new SimpleUser("theForumUser");
 
-        if (resultAdd == 15 ) {
-            System.out.println("Kalkulator działa poprawnie, wynik dodawania to: " + resultAdd);
-        } else {
-            System.out.println(("Kalkulator nie działa poprawnie. Poprawny wynik dodawania to: " + resultAdd));
-        }
+            String result = simpleUser.getUsername();
+            if (result.equals("theForumUser")) {
+                System.out.println("test OK");
+            } else {
+                System.out.println("Error!");
+            }
 
-        int resultSubstract = calculator.substract(10, 5);
-        if (resultSubstract == 5 ) {
-            System.out.println("Kalkulator działa poprawnie, wynik odejmowania to: " + resultSubstract);
-        } else {
-            System.out.println(("Kalkulator nie działa poprawnie. Poprawny wynik odejmowania to: " + resultSubstract));
+            // Testing Calculator class
+            Calculator calculator = new Calculator();
+            int addResult = calculator.add(180, 19);
+            int subResult = calculator.subtract(200, 150);
+            if (addResult == 199) {
+                System.out.println("Calculator test OK");
+            } else {
+                System.out.println("Calculator has error!");
+            }
         }
     }
-}
