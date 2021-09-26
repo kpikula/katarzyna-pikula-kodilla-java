@@ -1,9 +1,11 @@
-package com.kodilla.testing.forum;
+package com.kodilla.testing.collection;
 
 import com.kodilla.testing.user.SimpleUser;
 import org.junit.jupiter.api.*;
 
-class ForumTestSuite {
+@DisplayName("TDD: Forum Test Suite \uD83D\uDE31")
+
+class ForumTestSuite1 {
 @BeforeEach
 public void before() {
         System.out.println("Test Case: begin");
