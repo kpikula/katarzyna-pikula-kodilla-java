@@ -69,7 +69,7 @@ public class WeatherForecastTestSuite {
         temperaturesMap.put("Krakow", 26.2);
         when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         WeatherForecast medianTemperatureValue = new WeatherForecast(temperaturesMock);
-        double expectedValue = 25.2;
+        double expectedValue = 25.5;
 
         //When
         double medianOfTemperatures = medianTemperatureValue.calculateMedian();

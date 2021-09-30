@@ -43,31 +43,25 @@ public class WeatherForecast {
     }
 
     public double calculateMedian() {
-        Map<String, Double> resultMap2 = new HashMap<>();
+        ArrayList<Double> values = new ArrayList<>(temperatures.getTemperatures().values());
+        Collections.sort(values);
 
-        for (Map.Entry<String, Double> entry : temperatures.getTemperatures().entrySet()) {
-            resultMap2.put(entry.getKey(), entry.getValue());
-
-            Collection<Double> values = resultMap2.values();
-            ArrayList<Double> listOfValues = new ArrayList<>(values);
-
-            double median;
-            int size = listOfValues.size();
+        double median;
+        int size = values.size();
 
 
-            if (size % 2 == 0) {
-                double sumOfMiddleElements = listOfValues.get(size/2) + listOfValues.get(size/2+1);
-                median = ((double) sumOfMiddleElements) / 2;
-            } else {
-                median = (double) listOfValues.get((size+1)/2);
-            }
-
+        if (size % 2 == 0) {
+            double sumOfMiddleElements = values.get(size / 2) + values.get(size / 2 - 1);
+            median = ((double) sumOfMiddleElements) / 2;
+        } else {
+            median = (double) values.get(size / 2);
         }
         return median;
-
     }
 
+
 }
+
 
 
 

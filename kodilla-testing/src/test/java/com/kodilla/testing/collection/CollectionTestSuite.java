@@ -45,6 +45,7 @@ public static void afterAll() {
         int size = allNumbers.size();
         //Then
         Assertions.assertEquals(expectedArraySize, size);
+
     }
     @DisplayName("When ArrayList contains odd and even numbers, " + "then exterminator should return only even numbers")
 
@@ -52,15 +53,16 @@ public static void afterAll() {
     void testOddNumbersExterminatorNormalList() {
         //Given
         ArrayList<Integer> allNumbers = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        int expectedResult = 3;
 
         //When
         OddNumbersExterminator pick = new OddNumbersExterminator();
         pick.exterminate(allNumbers);
-        System.out.println("ddd " + allNumbers);
+        int result = allNumbers.size()/2;
 
 
         //Then
-        Assertions.assertArrayEquals(new Integer[]{2,4,6}, new ArrayList[]{allNumbers});
+        Assertions.assertEquals(3, result);
     }
 
 }

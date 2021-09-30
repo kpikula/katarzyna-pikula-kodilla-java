@@ -38,7 +38,7 @@ public class ShapeCollector {
         for (Shape shapee : shapeList) {
             str+= shapee+",";
         }
-        System.out.println(str);
+        System.out.println("GGGGGG" + str);
 
     }
 
