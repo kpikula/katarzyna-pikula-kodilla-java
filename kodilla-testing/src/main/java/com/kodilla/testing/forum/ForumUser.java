@@ -9,7 +9,8 @@ public class ForumUser {                                       // [5]
     private String name;                                        // [6]
     private String realName;                                    // [7]
     private List<ForumPost> posts = new ArrayList<>();          // [8]
-    private List<ForumComment> comments = new LinkedList<>();   // [9]
+    private List<ForumComment> comments = new LinkedList<>();
+    private List<ForumUser> users = new LinkedList<>();// [9]
 
     public ForumUser(String name, String realName) {            // [10]
         //name visible on forum
@@ -17,6 +18,11 @@ public class ForumUser {                                       // [5]
         //real name of the user
         this.realName = realName;                                // [12]
     }                                                           // [13]
+
+    public void addUser(String name, String realName) {
+        ForumUser theUser = new ForumUser(name, realName);
+        users.add(theUser);
+    }
 
     public void addPost(String author, String postBody) {       // [14]
         ForumPost thePost = new ForumPost(postBody, author);
@@ -34,7 +40,11 @@ public class ForumUser {                                       // [5]
 
     public int getCommentsQuantity() {                          // [21]
         return comments.size();                                              // [22]
-    }                                                           // [23]
+    }
+
+    public  int getUsersQuantity() {
+        return users.size();
+    }// [23]
 
     public ForumPost getPost(int postNumber) {                  // [24]
         if (postNumber >= 0 && postNumber < posts.size()) {
