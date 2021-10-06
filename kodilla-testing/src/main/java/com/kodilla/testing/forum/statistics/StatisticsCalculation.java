@@ -1,12 +1,15 @@
 package com.kodilla.testing.forum.statistics;
 
+import com.kodilla.testing.forum.ForumComment;
+import com.kodilla.testing.forum.ForumPost;
+import com.kodilla.testing.forum.ForumUser;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 
-
 public class StatisticsCalculation {
-    Statistics statistics;
     private int userCount;
     private int postsCount;
     private int commentsCount;
@@ -14,23 +17,45 @@ public class StatisticsCalculation {
     private double avCommentsperUser;
     private double avCommentsPerPost;
 
-//    public StatisticsCalculation(Statistics statistics) {
-//        this.statistics = statistics;
-//        statistics.userNames();
-//        return null;
-//        }
 
 
-        int postCounts = statistics.postsCount();
+    public void calculateAdvStatistics(Statistics statistics) {
+        userCount = statistics.userNames().size();
+        postsCount = statistics.postsCount();
+        commentsCount = statistics.commentsCount();
+        if (userCount > 0)
+        avCommentsperUser = commentsCount / userCount;
+        if (postsCount > 0)
+            avCommentsPerPost = commentsCount / postsCount;
+        if (userCount > 0)
+        avPostsPerUser = postsCount / userCount;
 
-        int commentCount = statistics.commentsCount();
     }
 
+    public int getUserCount() {
+        return userCount;
+    }
 
-//
-//    public void showStatistics() {
-//        System.out.println(numberOfUsers, numberOfPosts, numberOfComments);
-//    }
+    public int getPostsCount() {
+        return postsCount;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public double getAvPostsPerUser() {
+        return avPostsPerUser;
+    }
+
+    public double getAvCommentsperUser() {
+        return avCommentsperUser;
+    }
+
+    public double getAvCommentsPerPost() {
+        return avCommentsPerPost;
+    }
+}
 
 
 
