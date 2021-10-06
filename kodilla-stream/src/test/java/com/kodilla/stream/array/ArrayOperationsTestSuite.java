@@ -3,9 +3,6 @@ package com.kodilla.stream.array;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.OptionalDouble;
-import java.util.stream.IntStream;
-
 public class ArrayOperationsTestSuite {
 
     @Test
@@ -20,8 +17,6 @@ public class ArrayOperationsTestSuite {
         Assertions.assertEquals(17.5, average);
 
     }
-
-
 }
 
 
