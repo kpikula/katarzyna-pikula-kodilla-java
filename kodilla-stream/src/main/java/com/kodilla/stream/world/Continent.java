@@ -15,7 +15,6 @@ public final class Continent {
         return continentName;
     }
 
-
     public List<Country> getContinentCountries() {
         return continentCountries;
     }

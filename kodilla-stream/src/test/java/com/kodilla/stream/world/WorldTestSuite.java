@@ -7,7 +7,6 @@ import java.math.BigDecimal;
 
 public class WorldTestSuite {
 
-
     @Test
     void testGetPeopleQuantity() {
         //Given
@@ -37,5 +36,4 @@ public class WorldTestSuite {
         //Then
         Assertions.assertEquals(expected, peopleQuantity);
     }
-
 }
