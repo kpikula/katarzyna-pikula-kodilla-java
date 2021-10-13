@@ -10,6 +10,7 @@ public class Logics {
     private String computerMoveName = null;
     private int numberOfWinningRounds;
     private boolean end = false;
+    private int getNumberOfWinningRounds;
 
 
     public void gameStart() {
@@ -23,12 +24,11 @@ public class Logics {
         Scanner rounds = new Scanner(System.in);
         while (true) {
             System.out.println("Hello, " + playerName + ", how many rounds do you want to play to win?");
-            String s = rounds.nextLine();
+            String numberOfWinningRounds = rounds.nextLine();
             try {
-                int n = Integer.parseInt(s);
+                int n = Integer.parseInt(numberOfWinningRounds);
                 if (n > 0) {
-                    System.out.println("The number of rounds is: " + n + "\n");
-                    numberOfWinningRounds = n;
+                    System.out.println("The number of rounds is: " + numberOfWinningRounds + "\n");
                     return n;
                 } else {
                     System.out.println("The number of rounds must be greater than 0. Try again!\n");
@@ -119,7 +119,6 @@ public class Logics {
                 System.out.println("Are you sure you want to end the game? [Y/N]");
                 Scanner answerX = new Scanner(System.in);
                 String choice = answerX.nextLine();
-                choice = choice.toUpperCase(Locale.ROOT);
                 if (choice.equals("Y")) {
                     System.out.println("The game is over");
                     end = true;
@@ -132,7 +131,7 @@ public class Logics {
             } else if (roundEndChoice.equals("n")) {
                 System.out.println("Are you sure you want to start a new game? [Y/N]");
                 Scanner answerN = new Scanner(System.in);
-                String choice = answerN.nextLine().toUpperCase(Locale.ROOT);
+                String choice = answerN.nextLine();
                 if (choice.equals("Y")) {
                     System.out.println("A new round will start...");
                     end = false;
