@@ -10,6 +10,7 @@ public class Logics {
     private String computerMoveName = null;
     private int numberOfWinningRounds;
     private boolean end = false;
+    private int getNumberOfWinningRounds;
 
 
     public void gameStart() {
@@ -19,12 +20,23 @@ public class Logics {
         playerName = playerName.toUpperCase(Locale.ROOT);
     }
 
-    public void roundNumber() {
-        System.out.println("Hello, " + playerName + ", how many rounds do you want to play to win?");
+    public int roundNumber() {
         Scanner rounds = new Scanner(System.in);
-        numberOfWinningRounds = rounds.nextInt();
-        System.out.println("The number of rounds to win is: " + numberOfWinningRounds);
-        System.out.println("\nInstructions: " + playerName + ", use the following keys to play the game: *1* for rock, *2* for paper, *3* for scissors. Let's start!\n");
+        while (true) {
+            System.out.println("Hello, " + playerName + ", how many rounds do you want to play to win?");
+            String numberOfWinningRounds = rounds.nextLine();
+            try {
+                int n = Integer.parseInt(numberOfWinningRounds);
+                if (n > 0) {
+                    System.out.println("The number of rounds is: " + numberOfWinningRounds + "\n");
+                    return n;
+                } else {
+                    System.out.println("The number of rounds must be greater than 0. Try again!\n");
+                }
+            } catch (Exception e) {
+                System.out.println("\n" + playerName + ", only numbers are allowed. Try again!\n");
+            }
+        }
     }
 
     public int playerMove() {
@@ -52,9 +64,12 @@ public class Logics {
     }
 
     public void game() {
+        System.out.println("\nInstructions: " + playerName + ", use the following keys to play the game: *1* for rock, *2* for paper, *3* for scissors. Let's start!\n");
+        System.out.println("The number of rounds is: " + numberOfWinningRounds);
         while (!end) {
             int computerWin = 0;
             int playerWin = 0;
+
             for (int i = 0; i < numberOfWinningRounds; i++) {
                 System.out.println("Round: #" + (i + 1) + ". " + playerName + ", make your move!");
                 playerMove = playerMove();
