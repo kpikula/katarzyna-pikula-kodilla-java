@@ -10,7 +10,6 @@ public class Logics {
     private String computerMoveName = null;
     private int numberOfWinningRounds;
     private boolean end = false;
-    private int getNumberOfWinningRounds;
 
 
     public void gameStart() {
@@ -24,11 +23,12 @@ public class Logics {
         Scanner rounds = new Scanner(System.in);
         while (true) {
             System.out.println("Hello, " + playerName + ", how many rounds do you want to play to win?");
-            String numberOfWinningRounds = rounds.nextLine();
+            String s = rounds.nextLine();
             try {
-                int n = Integer.parseInt(numberOfWinningRounds);
+                int n = Integer.parseInt(s);
                 if (n > 0) {
-                    System.out.println("The number of rounds is: " + numberOfWinningRounds + "\n");
+                    System.out.println("The number of winning rounds is: " + n + "\n");
+                    numberOfWinningRounds = n;
                     return n;
                 } else {
                     System.out.println("The number of rounds must be greater than 0. Try again!\n");
@@ -63,9 +63,9 @@ public class Logics {
         return computerMove;
     }
 
+
     public void game() {
-        System.out.println("\nInstructions: " + playerName + ", use the following keys to play the game: *1* for rock, *2* for paper, *3* for scissors. Let's start!\n");
-        System.out.println("The number of rounds is: " + numberOfWinningRounds);
+        System.out.println("Instructions: " + playerName + ", use the following keys to play the game: *1* for rock, *2* for paper, *3* for scissors. Let's start!\n");
         while (!end) {
             int computerWin = 0;
             int playerWin = 0;
@@ -111,14 +111,25 @@ public class Logics {
                 System.out.println("The result is: " + playerWin + " for you and " + computerWin + " for the computer (" + playerWin + ":" + computerWin + ")\n");
             }
 
-            System.out.println("The round ended with the final result: " + playerWin + " for you and " + computerWin + " for the computer (" + playerWin + ":" + computerWin + "). Type *x* to end the game or type *n* to play again");
+//                System.out.println("The round ended with the final result: " + playerWin + " for you and " + computerWin + " for the computer (" + playerWin + ":" + computerWin + "). Type *x* to end the game or type *n* to play again");
+            if (playerWin > computerWin) {
+                System.out.println("The round ended with the final result: " + playerWin + " for you and " + computerWin + " for the computer (" + playerWin + ":" + computerWin + "). Congratulations, you win!!!\n");
+            } else if (playerWin == computerWin) {
+                System.out.println("The round ended with the final result: " + playerWin + " for you and " + computerWin + " for the computer (" + playerWin + ":" + computerWin + "). It's a tie!\n");
+            } else if (playerWin < computerWin) {
+                System.out.println("The round ended with the final result: " + playerWin + " for you and " + computerWin + " for the computer (" + playerWin + ":" + computerWin + "). You lose!!!\n");
+            }
+            System.out.println("Type *x* to end the game or type *n* to play again\n");
+
             Scanner roundEnd = new Scanner(System.in);
             String roundEndChoice = roundEnd.nextLine();
+            roundEndChoice = roundEndChoice.toLowerCase(Locale.ROOT);
 
             if (roundEndChoice.equals("x")) {
                 System.out.println("Are you sure you want to end the game? [Y/N]");
                 Scanner answerX = new Scanner(System.in);
                 String choice = answerX.nextLine();
+                choice = choice.toUpperCase(Locale.ROOT);
                 if (choice.equals("Y")) {
                     System.out.println("The game is over");
                     end = true;
@@ -127,11 +138,11 @@ public class Logics {
                     end = false;
                 }
 
-
             } else if (roundEndChoice.equals("n")) {
                 System.out.println("Are you sure you want to start a new game? [Y/N]");
                 Scanner answerN = new Scanner(System.in);
                 String choice = answerN.nextLine();
+                choice = choice.toUpperCase(Locale.ROOT);
                 if (choice.equals("Y")) {
                     System.out.println("A new round will start...");
                     end = false;
