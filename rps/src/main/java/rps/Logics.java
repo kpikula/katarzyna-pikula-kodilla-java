@@ -13,10 +13,7 @@ public class Logics {
 
 
     public void gameStart() {
-        Scanner player = new Scanner(System.in);
-        System.out.println("Enter your name");
-        playerName = player.next();
-        playerName = playerName.toUpperCase(Locale.ROOT);
+        playerName = UserDialogues.getName();
     }
 
     public int roundNumber() {
