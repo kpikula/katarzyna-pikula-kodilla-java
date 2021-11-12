@@ -1,10 +1,8 @@
 package com.kodilla.good.patterns.challenges;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public final class MovieStore {
     static private String ZELAZNYCZLOWIEK_IRONMANTRANSLATIONS = "Żelazny Człowiek";
@@ -36,11 +34,18 @@ public final class MovieStore {
         booksTitlesWithTranslations.put(new BookTitle(AV_BOOKSTITLESWITHTRANSLATIONS), avengersTranslations);
         booksTitlesWithTranslations.put(new BookTitle(FL_BOOKSTITLESWITHTRANSLATIONS), flashTranslations);
 
+
         String listOfBooks = booksTitlesWithTranslations.entrySet().stream()
-                .map(Map.Entry::toString)
-                .collect(Collectors.joining(""));
-        System.out.println("List of Books Titles with Translation:");
-        System.out.println(listOfBooks.replaceAll("=", "").replaceAll(",", "").replaceAll("]", "").replaceAll("\\[", "!").replaceAll(" ", ""));
+                .flatMap(e -> e.getValue().stream())
+                .map(Movie::getMovieTitle)
+                .collect(Collectors.joining("!"));
+
+        String listOfBooks2 = booksTitlesWithTranslations.keySet().stream()
+                .map(m -> m.toString())
+                .collect(Collectors.joining("!"));
+
+        System.out.println(listOfBooks + listOfBooks2);
+
     }
 
     public static void main(String[] args) {
