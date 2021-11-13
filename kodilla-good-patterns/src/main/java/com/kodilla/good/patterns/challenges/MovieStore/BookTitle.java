@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.MovieStore;
 
 import java.util.HashMap;
 import java.util.List;

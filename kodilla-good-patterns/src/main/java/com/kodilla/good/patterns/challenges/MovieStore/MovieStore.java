@@ -1,8 +1,7 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.MovieStore;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public final class MovieStore {
     static private String ZELAZNYCZLOWIEK_IRONMANTRANSLATIONS = "Żelazny Człowiek";
