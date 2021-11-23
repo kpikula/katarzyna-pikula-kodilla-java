@@ -1,28 +1,26 @@
 package com.kodilla.spring.portfolio;
 
 public class Board {
-    private TaskList toDoList;
-    private TaskList inProgressList;
-    private TaskList doneList;
+    private final TaskList toDoList;
+    private final TaskList inProgressList;
+    private final TaskList doneList;
 
-//    public Board(TaskList toDoList, TaskList inProgressList, TaskList doneList) {
-//        this.toDoList = toDoList;
-//        this.inProgressList = inProgressList;
-//        this.doneList = doneList;
-//    }
-
-    public void toDoListAdd(TaskList toDoList) {
-        toDoList.addTask("AAA_AAA");
-//        System.out.println(toDoList);
+    public Board(TaskList toDoList, TaskList inProgressList, TaskList doneList) {
+        this.toDoList = toDoList;
+        this.inProgressList = inProgressList;
+        this.doneList = doneList;
     }
 
-    public void inProgressListAdd(TaskList inProgressList) {
-        inProgressList.addTask("BBB_BBB");
-//        System.out.println(inProgressList);
+    public TaskList getInProgressList() {
+        return inProgressList;
     }
 
-    public void doneListAdd(TaskList doneList) {
-        doneList.addTask("CCC_CCC");
+    public TaskList getDoneList() {
+        return doneList;
+    }
+
+    public TaskList getToDoList() {
+        return toDoList;
     }
 
     @Override

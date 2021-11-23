@@ -1,5 +1,6 @@
 package com.kodilla.spring.portfolio;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,34 +10,20 @@ public class BoardTestSuite {
 
     @Autowired
     private Board board;
+    @Autowired
+    private TaskList toDoList;
 
     @Test
-    void createToDoListTest() {
+    void testBoardOfLists() {
         //Given
+        toDoList.addTask("AAA");
 
         //When
-        board.toDoListAdd(new TaskList("AAA"));
+        final var result = board.getToDoList().getTasks().get(0);
+
         //Then
-        System.out.println(board.toString());
-    }
+        Assertions.assertEquals("AAA", result);
+        Assertions.assertEquals(0, board.getInProgressList().getTasks().size());
 
-    @Test
-    void createInProgressListTest() {
-        //Given
-
-        //When
-        board.inProgressListAdd(new TaskList("BBB"));
-        //Then
-        System.out.println(board.toString());
-    }
-
-    @Test
-    void createDoneListTest() {
-        //Given
-
-        //When
-        board.doneListAdd(new TaskList("CCC"));
-        //Then
-        System.out.println(board.toString());
     }
 }
