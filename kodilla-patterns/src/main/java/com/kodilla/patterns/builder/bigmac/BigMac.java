@@ -73,10 +73,3 @@ public class BigMac {
                 '}';
     }
 }
-
-
-//    W tym pakiecie utwórz klasę Bigmac, zawierającą następujące pola:
-//    bun (pol. bułka do hamburgera – w odróżnieniu od roll – zwykłej bułki – może być z sezamem lub bez),
-//    burgers – oznaczającą ilość kotletów wołowych w środku kanapki,
-//    sauce – oznaczającą rodzaj użytego sosu (standard, 1000 wysp, barbecue), ingredients – oznaczającą listę składników dodatkowych (możliwe wartości to: sałata, cebula, bekon, ogórek, papryczki chilli, pieczarki, krewetki, ser).
-
