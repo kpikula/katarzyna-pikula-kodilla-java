@@ -1,34 +1,37 @@
-package com.kodilla.hibernate.tasklist;
+package com.kodilla.hibernate.task;
 
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "TASKLIST")
+@Table(name = "TASKLISTS")
 public class TaskList {
+
     private int id;
     private String listName;
     private String description;
+    private List<Task> tasks = new ArrayList<>();
 
+    public TaskList() {
+    }
 
     public TaskList(String listName, String description) {
         this.listName = listName;
         this.description = description;
     }
 
-    public TaskList() {
-
-    }
-
     @Id
-    @GeneratedValue
     @NotNull
+    @GeneratedValue
     @Column(name = "ID", unique = true)
     public int getId() {
         return id;
     }
 
+    @NotNull
     @Column(name = "LISTNAME")
     public String getListName() {
         return listName;
@@ -39,21 +42,30 @@ public class TaskList {
         return description;
     }
 
-    public void setId(int id) {
+    @OneToMany(
+            targetEntity = Task.class,
+            mappedBy = "taskList",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    private void setId(int id) {
         this.id = id;
     }
 
-    public void setListName(String listName) {
+    private void setListName(String listName) {
         this.listName = listName;
     }
 
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return listName.replaceAll("]", "").replaceAll("\\[", "");
+    private void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }
 
