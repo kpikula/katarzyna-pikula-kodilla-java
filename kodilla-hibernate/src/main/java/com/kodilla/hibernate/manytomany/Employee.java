@@ -6,12 +6,16 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = "Employee.retrieveEmployeeWithLastName",
+        query = "FROM Employee WHERE lastName = :LASTNAME"
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
     private int id;
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private List<Company> companies = new ArrayList<>();
 
 
@@ -19,8 +23,8 @@ public class Employee {
     }
 
     public Employee(String firstname, String lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstname;
+        this.lastName = lastname;
     }
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -47,26 +51,26 @@ public class Employee {
 
     @NotNull
     @Column(name = "FIRSTNAME")
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     @NotNull
     @Column(name = "LASTNAME")
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     private void setId(int id) {
         this.id = id;
     }
 
-    private void setFirstname(String firstname) {
-        this.firstname = firstname;
+    private void setFirstName(String firstname) {
+        this.firstName = firstname;
     }
 
-    private void setLastname(String lastname) {
-        this.lastname = lastname;
+    private void setLastName(String lastname) {
+        this.lastName = lastname;
     }
 }
 
