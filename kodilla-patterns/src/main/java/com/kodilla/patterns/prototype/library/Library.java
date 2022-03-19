@@ -50,6 +50,7 @@ public class Library extends Prototype<Library> {
                 ", books=" + books +
                 '}';
     }
+
     public Library shallowCopy() throws CloneNotSupportedException {
         return super.clone();
     }
