@@ -3,6 +3,7 @@ package com.kodilla.hibernate.invoice.dao;
 import com.kodilla.hibernate.invoice.Invoice;
 import com.kodilla.hibernate.invoice.Item;
 import com.kodilla.hibernate.invoice.Product;
+import org.hibernate.mapping.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,9 @@ public class InvoiceDaoTestSuite {
 
         //Clean
         try {
+            itemDao.deleteAll();
+            productDao.deleteAll();
+            invoiceDao.deleteAll();
             itemDao.deleteById(item1Id);
             itemDao.deleteById(item2Id);
             productDao.deleteById(product1Id);

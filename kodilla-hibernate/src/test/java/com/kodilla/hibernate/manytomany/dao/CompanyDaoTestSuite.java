@@ -88,11 +88,11 @@ public class CompanyDaoTestSuite {
         lindaKovalsky.getCompanies().add(greyMatter);
 
         companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
+        Integer softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
+        Integer dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
+        Integer greyMatterId = greyMatter.getId();
 
         //When
         List<Employee> employee = employeeDao.retrieveEmployeeWithLastName("Kovalsky");
