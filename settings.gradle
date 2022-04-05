@@ -12,5 +12,6 @@ include 'kodilla-hibernate'
 include 'kodilla-spring-web'
 include 'kodilla-patterns'
 include 'kodilla-patterns2'
+include 'kodilla-patternsv2'
 
 
