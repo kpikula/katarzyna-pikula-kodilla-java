@@ -34,8 +34,24 @@ public class StoredProcTestSuite {
     }
 
     @Test
-    public void testUpdateBestsellers() {
+    public void testUpdateBestsellers() throws SQLException {
+        // Given
+        DbManager dbManager = DbManager.getInstance();
+        Statement statement = dbManager.getConnection().createStatement();
 
+        // When
+        String sqlProcedureCall = "CALL UpdateBestsellers()";
+        statement.execute(sqlProcedureCall);
+        String notBestseller = "SELECT COUNT(*) AS HOW_MANY FROM BOOKS WHERE BESTSELLER=0";
+        ResultSet rs = statement.executeQuery(notBestseller);
+
+        // Then
+        int howMany = 0;
+        if (rs.next()) {
+            howMany = rs.getInt("HOW_MANY");
+        }
+        assertEquals(4, howMany);
+        rs.close();
+        statement.close();
     }
-
 }
